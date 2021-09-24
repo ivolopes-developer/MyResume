@@ -338,14 +338,6 @@ h6 {
   position: relative;
 }
 
-/* Hide element on Phone */
-@media only screen and (max-width: 981px) {
-  #python-interpreter,
-  #nav-python-interpretor {
-    display: none !important;
-  }
-}
-
 /*--------------------------------------------------------------
 # Sections General
 --------------------------------------------------------------*/
