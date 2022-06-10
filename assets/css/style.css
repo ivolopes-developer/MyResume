@@ -1,13 +1,3 @@
-/**
-* Template Name: Personal - v4.3.0
-* Template URL: https://bootstrapmade.com/personal-free-resume-bootstrap-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
-
-/*--------------------------------------------------------------
-# General
---------------------------------------------------------------*/
 html {
   overflow: auto;
 }
@@ -19,7 +9,6 @@ html {
 
 body {
   font-family: "Open Sans", sans-serif;
-  background-color: #040404;
   color: #fff;
   position: relative;
   background: transparent;
@@ -28,10 +17,10 @@ body {
 body::before {
   content: "";
   position: fixed;
-  background: #040404 url("../img/neural_bg.gif") top right no-repeat;
+  background: url("../img/neural_bg.gif") top right no-repeat;
   filter: blur(5px);
   -webkit-filter: blur(5px);
-  opacity: 0.2;
+  opacity: 0.1;
   background-size: cover;
   left: 0;
   right: 0;
@@ -142,13 +131,16 @@ h6 {
   #header h1 {
     font-size: 36px;
   }
+
   #header h2 {
     font-size: 20px;
     line-height: 30px;
   }
+
   #header .social-links {
     margin-top: 15px;
   }
+
   #header .container {
     display: flex;
     flex-direction: column;
@@ -189,6 +181,7 @@ h6 {
   #header.header-top {
     height: 60px;
   }
+
   #header.header-top h1 {
     font-size: 26px;
   }
@@ -217,7 +210,7 @@ h6 {
   position: relative;
 }
 
-.navbar li + li {
+.navbar li+li {
   margin-left: 30px;
 }
 
@@ -256,7 +249,7 @@ h6 {
 }
 
 .navbar a:hover:before,
-.navbar li:hover > a:before,
+.navbar li:hover>a:before,
 .navbar .active:before {
   visibility: visible;
   width: 25px;
@@ -265,7 +258,7 @@ h6 {
 .navbar a:hover,
 .navbar .active,
 .navbar .active:focus,
-.navbar li:hover > a {
+.navbar li:hover>a {
   color: #fff;
 }
 
@@ -288,6 +281,7 @@ h6 {
   .mobile-nav-toggle {
     display: block;
   }
+
   .navbar ul {
     display: none;
   }
@@ -329,7 +323,7 @@ h6 {
   padding: 12px 20px;
 }
 
-.navbar-mobile li + li {
+.navbar-mobile li+li {
   margin: 0;
 }
 
@@ -368,6 +362,7 @@ section .container {
   section {
     top: 120px;
   }
+
   section.section-show {
     top: 80px;
   }
@@ -963,7 +958,7 @@ section .container {
   font-size: 15px;
 }
 
-.portfolio-details .portfolio-info ul li + li {
+.portfolio-details .portfolio-info ul li+li {
   margin-top: 10px;
 }
 
@@ -1060,7 +1055,7 @@ section .container {
   font-weight: 600;
 }
 
-.contact .php-email-form .error-message br + br {
+.contact .php-email-form .error-message br+br {
   margin-top: 25px;
 }
 
@@ -1152,6 +1147,7 @@ section .container {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
@@ -1161,6 +1157,7 @@ section .container {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
