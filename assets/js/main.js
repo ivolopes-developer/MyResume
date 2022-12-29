@@ -22,9 +22,9 @@
   /*
   calc idade
   */
-  let today = new Date();
-  let birth = 1999;
-  let idade = today.getFullYear() - birth;
+  let hoje = new Date();
+  let nascimento = 1999;
+  let idade = hoje.getFullYear() - nascimento;
 
   document.getElementById("idade").innerHTML = idade;
 
