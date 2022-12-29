@@ -19,6 +19,15 @@
     }
   }
 
+  /*
+  calc idade
+  */
+  let today = new Date();
+  let birth = 1999;
+  let idade = today.getFullYear() - birth;
+
+  document.getElementById("idade").innerHTML = idade;
+
   /**
    * Easy event listener function
    */
