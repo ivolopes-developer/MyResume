@@ -4,6 +4,8 @@
  * Author: BootstrapMade.com
  * License: https://bootstrapmade.com/license/
  */
+
+
 (function () {
   "use strict";
 
@@ -18,15 +20,6 @@
       return document.querySelector(el)
     }
   }
-
-  /*
-  calc idade
-  */
-  let hoje = new Date();
-  let nascimento = 1999;
-  let idade = hoje.getFullYear() - nascimento;
-
-  document.getElementById("idade").innerHTML = idade;
 
   /**
    * Easy event listener function
@@ -254,6 +247,15 @@
   });
 
 })()
+
+/*
+calc idade
+*/
+let hoje = new Date();
+let nascimento = 1999;
+let idade = hoje.getFullYear() - nascimento;
+
+document.getElementById("idade").innerHTML = idade;
 
 // INICIO DAS PARTICULAS ----------------------------------------------------------------------------------------------------------------
 
