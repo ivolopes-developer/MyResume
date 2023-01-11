@@ -252,10 +252,26 @@
 calc idade
 */
 let hoje = new Date();
+let diaAniversario = 20;
+let mesNascimento = 02;
 let nascimento = 1999;
 let idade = hoje.getFullYear() - nascimento;
 
-document.getElementById("idade").innerHTML = idade;
+//verifica se já passou o dia de aniversário e se já está ou já passou o mês de aniversário
+// alert(hoje.getDate()+","+hoje.getMonth());
+if(hoje.getDate() >= diaAniversario && hoje.getMonth()+1 >= mesNascimento) {
+  var temp = document.querySelectorAll('#idade');
+  for (let index = 0; index < temp.length; index++) {
+    temp[index].innerHTML = idade;
+    //document.getElementById("idade").innerHTML = idade;
+  }
+} else {
+  var temp = document.querySelectorAll('#idade');
+  for (let index = 0; index < temp.length; index++) {
+    temp[index].innerHTML = idade-1;
+    //document.getElementById("idade").innerHTML = idade;
+  }
+}
 
 // INICIO DAS PARTICULAS ----------------------------------------------------------------------------------------------------------------
 
