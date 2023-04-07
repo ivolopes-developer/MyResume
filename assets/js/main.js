@@ -5,7 +5,6 @@
  * License: https://bootstrapmade.com/license/
  */
 
-
 (function () {
   "use strict";
 
@@ -13,28 +12,28 @@
    * Easy selector helper function
    */
   const select = (el, all = false) => {
-    el = el.trim()
+    el = el.trim();
     if (all) {
-      return [...document.querySelectorAll(el)]
+      return [...document.querySelectorAll(el)];
     } else {
-      return document.querySelector(el)
+      return document.querySelector(el);
     }
-  }
+  };
 
   /**
    * Easy event listener function
    */
   const on = (type, el, listener, all = false) => {
-    let selectEl = select(el, all)
+    let selectEl = select(el, all);
 
     if (selectEl) {
       if (all) {
-        selectEl.forEach(e => e.addEventListener(type, listener))
+        selectEl.forEach((e) => e.addEventListener(type, listener));
       } else {
-        selectEl.addEventListener(type, listener)
+        selectEl.addEventListener(type, listener);
       }
     }
-  }
+  };
 
   /**
    * Scrolls to an element with header offset
@@ -42,99 +41,103 @@
   const scrollto = (el) => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth'
-    })
-  }
+      behavior: "smooth",
+    });
+  };
 
   /**
    * Mobile nav toggle
    */
-  on('click', '.mobile-nav-toggle', function (e) {
-    select('#navbar').classList.toggle('navbar-mobile')
-    this.classList.toggle('bi-list')
-    this.classList.toggle('bi-x')
-  })
+  on("click", ".mobile-nav-toggle", function (e) {
+    select("#navbar").classList.toggle("navbar-mobile");
+    this.classList.toggle("bi-list");
+    this.classList.toggle("bi-x");
+  });
 
   /**
    * Scrool with ofset on links with a class name .scrollto
    */
-  on('click', '#navbar .nav-link', function (e) {
-    let section = select(this.hash)
-    if (section) {
-      e.preventDefault()
+  on(
+    "click",
+    "#navbar .nav-link",
+    function (e) {
+      let section = select(this.hash);
+      if (section) {
+        e.preventDefault();
 
-      let navbar = select('#navbar')
-      let header = select('#header')
-      let sections = select('section', true)
-      let navlinks = select('#navbar .nav-link', true)
+        let navbar = select("#navbar");
+        let header = select("#header");
+        let sections = select("section", true);
+        let navlinks = select("#navbar .nav-link", true);
 
-      navlinks.forEach((item) => {
-        item.classList.remove('active')
-      })
+        navlinks.forEach((item) => {
+          item.classList.remove("active");
+        });
 
-      this.classList.add('active')
+        this.classList.add("active");
 
-      if (navbar.classList.contains('navbar-mobile')) {
-        navbar.classList.remove('navbar-mobile')
-        let navbarToggle = select('.mobile-nav-toggle')
-        navbarToggle.classList.toggle('bi-list')
-        navbarToggle.classList.toggle('bi-x')
-      }
+        if (navbar.classList.contains("navbar-mobile")) {
+          navbar.classList.remove("navbar-mobile");
+          let navbarToggle = select(".mobile-nav-toggle");
+          navbarToggle.classList.toggle("bi-list");
+          navbarToggle.classList.toggle("bi-x");
+        }
 
-      if (this.hash == '#header') {
-        header.classList.remove('header-top')
-        sections.forEach((item) => {
-          item.classList.remove('section-show')
-        })
-        return;
-      }
-
-      if (!header.classList.contains('header-top')) {
-        header.classList.add('header-top')
-        setTimeout(function () {
+        if (this.hash == "#header") {
+          header.classList.remove("header-top");
           sections.forEach((item) => {
-            item.classList.remove('section-show')
-          })
-          section.classList.add('section-show')
+            item.classList.remove("section-show");
+          });
+          return;
+        }
 
-        }, 350);
-      } else {
-        sections.forEach((item) => {
-          item.classList.remove('section-show')
-        })
-        section.classList.add('section-show')
+        if (!header.classList.contains("header-top")) {
+          header.classList.add("header-top");
+          setTimeout(function () {
+            sections.forEach((item) => {
+              item.classList.remove("section-show");
+            });
+            section.classList.add("section-show");
+          }, 350);
+        } else {
+          sections.forEach((item) => {
+            item.classList.remove("section-show");
+          });
+          section.classList.add("section-show");
+        }
+
+        scrollto(this.hash);
       }
-
-      scrollto(this.hash)
-    }
-  }, true)
+    },
+    true
+  );
 
   /**
    * Activate/show sections on load with hash links
    */
-  window.addEventListener('load', () => {
+  window.addEventListener("load", () => {
     if (window.location.hash) {
-      let initial_nav = select(window.location.hash)
+      let initial_nav = select(window.location.hash);
 
       if (initial_nav) {
-        let header = select('#header')
-        let navlinks = select('#navbar .nav-link', true)
+        let header = select("#header");
+        let navlinks = select("#navbar .nav-link", true);
 
-        header.classList.add('header-top')
+        header.classList.add("header-top");
 
         navlinks.forEach((item) => {
-          if (item.getAttribute('href') == window.location.hash) {
-            item.classList.add('active')
+          if (item.getAttribute("href") == window.location.hash) {
+            item.classList.add("active");
           } else {
-            item.classList.remove('active')
+            item.classList.remove("active");
           }
-        })
+        });
 
         setTimeout(function () {
-          initial_nav.classList.add('section-show')
+          initial_nav.classList.add("section-show");
         }, 350);
 
-        scrollto(window.location.hash)
+        scrollto(window.location.hash);
       }
     }
   });
@@ -142,111 +145,114 @@
   /**
    * Skills animation
    */
-  let skilsContent = select('.skills-content');
+  let skilsContent = select(".skills-content");
   if (skilsContent) {
     new Waypoint({
       element: skilsContent,
-      offset: '90%',
+      offset: "90%",
       handler: function (direction) {
-        let progress = select('.progress .progress-bar', true);
+        let progress = select(".progress .progress-bar", true);
         progress.forEach((el) => {
-          el.style.width = el.getAttribute('aria-valuenow') + '%'
+          el.style.width = el.getAttribute("aria-valuenow") + "%";
         });
-      }
-    })
+      },
+    });
   }
 
   /**
    * Testimonials slider
    */
-  new Swiper('.testimonials-slider', {
+  new Swiper(".testimonials-slider", {
     speed: 600,
     loop: true,
     autoplay: {
       delay: 5000,
-      disableOnInteraction: false
+      disableOnInteraction: false,
     },
-    slidesPerView: 'auto',
+    slidesPerView: "auto",
     pagination: {
-      el: '.swiper-pagination',
-      type: 'bullets',
-      clickable: true
+      el: ".swiper-pagination",
+      type: "bullets",
+      clickable: true,
     },
     breakpoints: {
       320: {
         slidesPerView: 1,
-        spaceBetween: 20
+        spaceBetween: 20,
       },
 
       1200: {
         slidesPerView: 3,
-        spaceBetween: 20
-      }
-    }
+        spaceBetween: 20,
+      },
+    },
   });
 
   /**
    * Porfolio isotope and filter
    */
-  window.addEventListener('load', () => {
-    let portfolioContainer = select('.portfolio-container');
+  window.addEventListener("load", () => {
+    let portfolioContainer = select(".portfolio-container");
     if (portfolioContainer) {
       let portfolioIsotope = new Isotope(portfolioContainer, {
-        itemSelector: '.portfolio-item',
-        layoutMode: 'fitRows'
+        itemSelector: ".portfolio-item",
+        layoutMode: "fitRows",
       });
 
-      let portfolioFilters = select('#portfolio-flters li', true);
+      let portfolioFilters = select("#portfolio-flters li", true);
 
-      on('click', '#portfolio-flters li', function (e) {
-        e.preventDefault();
-        portfolioFilters.forEach(function (el) {
-          el.classList.remove('filter-active');
-        });
-        this.classList.add('filter-active');
+      on(
+        "click",
+        "#portfolio-flters li",
+        function (e) {
+          e.preventDefault();
+          portfolioFilters.forEach(function (el) {
+            el.classList.remove("filter-active");
+          });
+          this.classList.add("filter-active");
 
-        portfolioIsotope.arrange({
-          filter: this.getAttribute('data-filter')
-        });
-      }, true);
+          portfolioIsotope.arrange({
+            filter: this.getAttribute("data-filter"),
+          });
+        },
+        true
+      );
     }
-
   });
 
   /**
-   * Initiate portfolio lightbox 
+   * Initiate portfolio lightbox
    */
   const portfolioLightbox = GLightbox({
-    selector: '.portfolio-lightbox'
+    selector: ".portfolio-lightbox",
   });
 
   /**
-   * Initiate portfolio details lightbox 
+   * Initiate portfolio details lightbox
    */
   const portfolioDetailsLightbox = GLightbox({
-    selector: '.portfolio-details-lightbox',
-    width: '90%',
-    height: '90vh'
+    selector: ".portfolio-details-lightbox",
+    width: "90%",
+    height: "90vh",
   });
 
   /**
    * Portfolio details slider
    */
-  new Swiper('.portfolio-details-slider', {
+  new Swiper(".portfolio-details-slider", {
     speed: 400,
     loop: true,
     autoplay: {
       delay: 5000,
-      disableOnInteraction: false
+      disableOnInteraction: false,
     },
     pagination: {
-      el: '.swiper-pagination',
-      type: 'bullets',
-      clickable: true
-    }
+      el: ".swiper-pagination",
+      type: "bullets",
+      clickable: true,
+    },
   });
-
-})()
+})();
 
 /*
 calc idade
@@ -257,19 +263,24 @@ let mesNascimento = 02;
 let nascimento = 1999;
 let idade = hoje.getFullYear() - nascimento;
 
-//verifica se já passou o dia de aniversário e se já está ou já passou o mês de aniversário
-// alert(hoje.getDate()+","+hoje.getMonth());
-if(hoje.getDate() >= diaAniversario && hoje.getMonth()+1 >= mesNascimento) {
-  var temp = document.querySelectorAll('#idade');
-  for (let index = 0; index < temp.length; index++) {
+/* This code is calculating the age of the user based on their birthdate. It first gets the current
+date and then checks if the current day and month are greater than or equal to the user's birth day
+and month. If it is, then it sets the age to the current year minus the birth year. If not, it
+subtracts 1 from the age. Finally, it updates the HTML element with the id "idade" to display the
+calculated age. The code uses querySelectorAll to select all elements with the id "idade" and
+updates their innerHTML property to display the age. */
+var temp = document.querySelectorAll("#idade");
+for (let index = 0; index < temp.length; index++) {
+  console.log(hoje.getDate(), hoje.getMonth() + 1);
+  if (
+    (hoje.getDate() >= diaAniversario || hoje.getDate() < diaAniversario) &&
+    hoje.getMonth() + 1 >= mesNascimento
+  ) {
+    //já fiz o anus
     temp[index].innerHTML = idade;
-    //document.getElementById("idade").innerHTML = idade;
-  }
-} else {
-  var temp = document.querySelectorAll('#idade');
-  for (let index = 0; index < temp.length; index++) {
-    temp[index].innerHTML = idade-1;
-    //document.getElementById("idade").innerHTML = idade;
+  } else {
+    //não fiz o anus
+    temp[index].innerHTML = idade - 1;
   }
 }
 
@@ -278,70 +289,70 @@ if(hoje.getDate() >= diaAniversario && hoje.getMonth()+1 >= mesNascimento) {
 /* ---- particles.js config ---- */
 
 particlesJS("particles-js", {
-  "particles": {
-    "number": {
-      "value": 380,
-      "density": {
-        "enable": true,
-        "value_area": 3000
-      }
-    },
-    "color": {
-      "value": "#ffffff"
-    },
-    "shape": {
-      "type": "circle",
-      "stroke": {
-        "width": 0,
-        "color": "#000000"
+  particles: {
+    number: {
+      value: 380,
+      density: {
+        enable: true,
+        value_area: 3000,
       },
-      "polygon": {
-        "nb_sides": 5
-      }
     },
-    "opacity": {
-      "value": 0,
-      "random": false,
-      "anim": {
-        "enable": false,
-        "speed": 1,
-        "opacity_min": 0.1,
-        "sync": false
-      }
+    color: {
+      value: "#ffffff",
     },
-    "size": {
-      "value": 5,
-      "random": true,
-      "anim": {
-        "enable": false,
-        "speed": 40,
-        "size_min": 0.1,
-        "sync": false
-      }
+    shape: {
+      type: "circle",
+      stroke: {
+        width: 0,
+        color: "#000000",
+      },
+      polygon: {
+        nb_sides: 5,
+      },
     },
-    "line_linked": {
-      "enable": true,
-      "distance": 150,
-      "color": "#ffffff",
-      "opacity": 0.5,
-      "width": 1
+    opacity: {
+      value: 0,
+      random: false,
+      anim: {
+        enable: false,
+        speed: 1,
+        opacity_min: 0.1,
+        sync: false,
+      },
     },
-    "move": {
-      "enable": true,
-      "speed": 1,
-      "direction": "none",
-      "random": false,
-      "straight": false,
-      "out_mode": "out",
-      "bounce": false,
-      "attract": {
-        "enable": false,
-        "rotateX": 600,
-        "rotateY": 1200
-      }
-    }
+    size: {
+      value: 5,
+      random: true,
+      anim: {
+        enable: false,
+        speed: 40,
+        size_min: 0.1,
+        sync: false,
+      },
+    },
+    line_linked: {
+      enable: true,
+      distance: 150,
+      color: "#ffffff",
+      opacity: 0.5,
+      width: 1,
+    },
+    move: {
+      enable: true,
+      speed: 1,
+      direction: "none",
+      random: false,
+      straight: false,
+      out_mode: "out",
+      bounce: false,
+      attract: {
+        enable: false,
+        rotateX: 600,
+        rotateY: 1200,
+      },
+    },
   },
-  "retina_detect": true
+  retina_detect: true,
 });
 
 // FIM DAS PARTICULAS ----------------------------------------------------------------------------------------------------------------
