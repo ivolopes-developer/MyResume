@@ -1,10 +1,6 @@
-Hey there...
+It's just my website... i don't know what you expect to find on this README file <3
+<br><br>
 
-
-This is just my website, where you can find my work experience and self leaning ^^
-
-Hope you like it
-
-
-
-Cya \o
+<hr>
+With all the love existing in the world,
+Ivo Lopes 👋😗
