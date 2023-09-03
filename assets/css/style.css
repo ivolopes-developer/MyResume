@@ -888,8 +888,11 @@ section .container {
 
 .portfolio .portfolio-wrap .portfolio-links a {
 	color: #fff;
-	margin: 0 2px;
-	font-size: 28px;
+	margin: 0;
+	margin-top: 10px;
+	text-decoration: underline;
+	font-size: 24px;
+	font-weight: 400;
 	font-family: "Inter", sans-serif;
 	display: inline-block;
 	transition: 0.3s;
