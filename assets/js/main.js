@@ -304,24 +304,24 @@ particlesJS("particles-js", {
 			type: "circle",
 			stroke: {
 				width: 0,
-				color: "#000000",
+				color: "#fff",
 			},
 			polygon: {
 				nb_sides: 5,
 			},
 		},
 		opacity: {
-			value: 0,
-			random: false,
+			value: 1,
+			random: true,
 			anim: {
-				enable: false,
+				enable: true,
 				speed: 1,
 				opacity_min: 0.1,
-				sync: false,
+				sync: true,
 			},
 		},
 		size: {
-			value: 5,
+			value: 3,
 			random: true,
 			anim: {
 				enable: false,
