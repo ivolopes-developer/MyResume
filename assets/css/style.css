@@ -1182,6 +1182,59 @@ section .container {
 	}
 }
 
+.form-container {
+	margin-top: 50px;
+	display: flex;
+	width: 100%;
+	justify-content: center;
+	align-items: flex-start;
+	align-content: flex-start;
+	flex-wrap: wrap;
+}
+
+.form-container > .form-frame {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 20px;
+	flex: 1 0 0;
+}
+
+.form-container > .form-frame label {
+	align-self: stretch;
+	color: #000;
+	font-family: DotGothic16;
+	font-size: 24px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	letter-spacing: 1.92px;
+}
+
+.form-container > .form-frame input {
+	height: 63px;
+	align-self: stretch;
+	border: 1px solid #000;
+	font-size: 20px;
+	font-family: "Inter", sans-serif;
+	background: rgba(217, 217, 217, 0);
+}
+
+.form-container > .form-frame textarea {
+	height: 347px;
+	align-self: stretch;
+	border: 1px solid #000;
+	font-size: 20px;
+	font-family: "Inter", sans-serif;
+	background: rgba(217, 217, 217, 0);
+}
+
+.form-container > .form-frame input:focus,
+.form-container > .form-frame textarea:focus {
+	border: 1px solid #db007c;
+	outline: 1px solid #db007c;
+}
+
 /*--------------------------------------------------------------
 # Credits
 --------------------------------------------------------------*/
