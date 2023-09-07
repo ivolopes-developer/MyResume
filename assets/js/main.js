@@ -356,3 +356,69 @@ particlesJS("particles-js", {
 });
 
 // FIM DAS PARTICULAS ----------------------------------------------------------------------------------------------------------------
+
+//SENDING CONTACT FORM TO DISCORD INICIO ------------------------------------
+
+document
+	.getElementById("contact-form")
+	.addEventListener("submit", function (event) {
+		event.preventDefault(); // Prevenir o comportamento padrão do formulário
+
+		const formData = new FormData(this);
+
+		// Converter o objeto FormData em um objeto JSON
+		const formDataObject = {};
+		formData.forEach((value, key) => {
+			formDataObject[key] = value;
+		});
+
+		// Enviar dados para o webhook do Discord
+		fetch(
+			"https://discord.com/api/webhooks/1149356621865160737/MDpVbhEtd9iHD1m0tY8_mqY8rEqdEzf7Pwl4201-j2Si1kwQONdjReciMHSbQuYsj4U0",
+			{
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+					content: "Novo formulário enviado:",
+					embeds: [
+						{
+							title: "Formulário de Contato",
+							color: 16711680, // Cor vermelha (você pode escolher outra)
+							fields: [
+								{
+									name: "Nome",
+									value: formDataObject.name,
+									inline: true,
+								},
+								{
+									name: "Email",
+									value: formDataObject.email,
+									inline: true,
+								},
+								{
+									name: "Mensagem",
+									value: formDataObject.message,
+								},
+							],
+						},
+					],
+				}),
+			}
+		)
+			.then((response) => {
+				if (response.ok) {
+					alert("Formulário enviado!");
+					// Você também pode redefinir o formulário se desejar
+					// this.reset();
+				} else {
+					alert("Falha no envio do formulário!");
+				}
+			})
+			.catch((error) => {
+				console.error("Erro:", error);
+			});
+	});
+
+//SENDING CONTACT FORM TO DISCORD FIM ------------------------------------
