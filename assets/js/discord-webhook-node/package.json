@@ -1,0 +1,24 @@
+{
+  "name": "discord-webhook-node",
+  "version": "1.0.7",
+  "description": "Allows for easy webhook sending through discord's webhook API",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "node tests/index.js"
+  },
+  "author": "Matthew Mulfinger",
+  "license": "MIT",
+  "keywords": [
+    "Webhook",
+    "Discord",
+    "Bot"
+  ],
+  "homepage": "https://github.com/matthew1232/discord-webhook-node#readme",
+  "dependencies": {
+    "form-data": "^3.0.0",
+    "node-fetch": "^2.6.0"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0"
+  }
+}

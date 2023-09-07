@@ -1,10 +1,3 @@
-/**
- * Template Name: Personal - v4.3.0
- * Template URL: https://bootstrapmade.com/personal-free-resume-bootstrap-template/
- * Author: BootstrapMade.com
- * License: https://bootstrapmade.com/license/
- */
-
 (function () {
 	"use strict";
 
@@ -359,66 +352,38 @@ particlesJS("particles-js", {
 
 //SENDING CONTACT FORM TO DISCORD INICIO ------------------------------------
 
-document
-	.getElementById("contact-form")
-	.addEventListener("submit", function (event) {
-		event.preventDefault(); // Prevenir o comportamento padrão do formulário
+const { Webhook, MessageBuilder } = require("./discord-webhook-node");
+const express = require("express");
+const bodyParser = require("body-parser");
 
-		const formData = new FormData(this);
+const app = express();
+app.use(bodyParser.urlencoded({ extended: true }));
 
-		// Converter o objeto FormData em um objeto JSON
-		const formDataObject = {};
-		formData.forEach((value, key) => {
-			formDataObject[key] = value;
-		});
+const webhookURL =
+	"https://discord.com/api/webhooks/1149356621865160737/MDpVbhEtd9iHD1m0tY8_mqY8rEqdEzf7Pwl4201-j2Si1kwQONdjReciMHSbQuYsj4U0";
 
-		// Enviar dados para o webhook do Discord
-		fetch(
-			"https://discord.com/api/webhooks/1149356621865160737/MDpVbhEtd9iHD1m0tY8_mqY8rEqdEzf7Pwl4201-j2Si1kwQONdjReciMHSbQuYsj4U0",
-			{
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify({
-					content: "Novo formulário enviado:",
-					embeds: [
-						{
-							title: "Formulário de Contato",
-							color: 16711680, // Cor vermelha (você pode escolher outra)
-							fields: [
-								{
-									name: "Nome",
-									value: formDataObject.name,
-									inline: true,
-								},
-								{
-									name: "Email",
-									value: formDataObject.email,
-									inline: true,
-								},
-								{
-									name: "Mensagem",
-									value: formDataObject.message,
-								},
-							],
-						},
-					],
-				}),
-			}
-		)
-			.then((response) => {
-				if (response.ok) {
-					alert("Formulário enviado!");
-					// Você também pode redefinir o formulário se desejar
-					// this.reset();
-				} else {
-					alert("Falha no envio do formulário... Teste mais tarde");
-				}
-			})
-			.catch((error) => {
-				console.error("Erro:", error);
-			});
-	});
+app.post("/contact-form", async (req, res) => {
+	const { name, email, message } = req.body;
+
+	// Crie uma instância do webhook
+	const webhook = new Webhook(webhookURL);
+
+	// Crie uma mensagem
+	const messageBuilder = new MessageBuilder()
+		.setTitle("Formulário de Contato")
+		.setColor("#FF0000") // Cor vermelha (você pode escolher outra)
+		.addField("Nome", name, true)
+		.addField("Email", email, true)
+		.addField("Mensagem", message);
+
+	// Envie a mensagem para o webhook
+	await webhook.send(messageBuilder);
+
+	res.send("Formulário enviado com sucesso para o Discord!");
+});
+
+app.listen(3000, () => {
+	console.log("Servidor está rodando na porta 3000");
+});
 
 //SENDING CONTACT FORM TO DISCORD FIM ------------------------------------
