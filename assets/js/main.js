@@ -413,7 +413,7 @@ document
 					// Você também pode redefinir o formulário se desejar
 					// this.reset();
 				} else {
-					alert("Falha no envio do formulário!");
+					alert("Falha no envio do formulário... Teste mais tarde");
 				}
 			})
 			.catch((error) => {
